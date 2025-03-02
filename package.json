@@ -1,0 +1,31 @@
+{
+	"name": "layout-js",
+	"version": "1.0.0",
+	"description": "Layout computing library",
+	"keywords": ["layout", "flex", "UI", "DOM", "larana", "frontend"],
+	"main": "index.ts",
+	"type": "module",
+	"scripts": {
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"dev": "node --experimental-strip-types --experimental-modules test.ts",
+		"lint": "eslint src"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/laranatech/layout-js.git"
+	},
+	"author": "Evgenii Kucheriavyi",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/laranatech/layout-js/issues"
+	},
+	"homepage": "https://github.com/laranatech/layout-js#readme",
+	"devDependencies": {
+		"vitest": "^3.0.7",
+		"@eslint/js": "^9.21.0",
+		"eslint": "^9.21.0",
+		"globals": "^16.0.0",
+		"typescript-eslint": "^8.25.0"
+	}
+}
