@@ -1,12 +1,12 @@
 import type {
 	Dimensions,
 	WIPNode,
-} from '../types.ts'
-import { fix } from '../sizing.ts'
+} from '../types'
+import { fix } from '../sizing'
 
-import { computeFitHeights, computeFitWidths } from './compute-fit.ts'
-import { computeFixHeights, computeFixWidths } from './compute-fix.ts'
-import { computeGrowHeights, computeGrowWidths } from './compute-grow.ts'
+import { computeFitHeights, computeFitWidths } from './compute-fit'
+import { computeFixHeights, computeFixWidths } from './compute-fix'
+import { computeGrowHeights, computeGrowWidths } from './compute-grow'
 
 /**
  *

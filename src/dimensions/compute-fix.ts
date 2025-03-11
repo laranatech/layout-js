@@ -1,6 +1,6 @@
-import { isFix } from '../sizing.ts'
-import type { Axis, WIPNode } from '../types.ts'
-import { mapAxisToDimension } from '../utils.ts'
+import { isFix } from '../sizing'
+import type { Axis, WIPNode } from '../types'
+import { mapAxisToDimension } from '../utils'
 
 export const computeFixDimension = (node: WIPNode, axis: Axis): WIPNode => {
 	const dimension = mapAxisToDimension(axis)

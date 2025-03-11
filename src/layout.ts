@@ -4,10 +4,10 @@ import type {
 	Output,
 	OutputNode,
 	WIPNode,
-} from './types.ts'
-import { prepareWIPNode } from './prepare-wip-node.ts'
-import { computeDimensions } from './dimensions/index.ts'
-import { computePositions } from './positions.ts'
+} from './types'
+import { prepareWIPNode } from './prepare-wip-node'
+import { computeDimensions } from './dimensions/index'
+import { computePositions } from './positions'
 
 export const prepareOutputNode = (node: WIPNode, parent: OutputNode | null): OutputNode => {
 	const outputNode: OutputNode = {

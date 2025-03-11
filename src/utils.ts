@@ -1,4 +1,4 @@
-import type { Axis, Dimension, Dimensions, WIPNode } from './types.ts'
+import type { Axis, Dimension, Dimensions, WIPNode } from './types'
 
 export const clamp = (number: number, min: number, max: number): number => {
 	return Math.max(min, Math.min(number, max))

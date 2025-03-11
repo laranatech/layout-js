@@ -1,8 +1,8 @@
 import type {
 	WIPNode,
 	Axis,
-} from './types.ts'
-import { mapAxisToDimension, sumChildrenDimensions } from './utils.ts'
+} from './types'
+import { mapAxisToDimension, sumChildrenDimensions } from './utils'
 
 const computeInitialOffset = (node: WIPNode, axis: Axis, total: number): number => {
 	const dimension = mapAxisToDimension(axis)
@@ -53,8 +53,10 @@ const computeChildrenPositons = (node: WIPNode): WIPNode => {
 	const computePosition = (node: WIPNode, axis: Axis): WIPNode => {
 		const dimension = mapAxisToDimension(axis)
 
+		const parentPositon = node.parent ? node.parent.position.absolute[axis] : 0
+
 		node.position.relative[axis] = offset[axis]
-		node.position.absolute[axis] = offset[axis] + node.parent.position.absolute[axis]
+		node.position.absolute[axis] = offset[axis] + parentPositon
 		offset[axis] += node.dimensions[dimension] + gap[axis]
 
 		return node

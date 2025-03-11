@@ -1,7 +1,7 @@
-import { getPaddingByAxis } from '../padding.ts'
-import { isFit, isGrow } from '../sizing.ts'
-import type { Axis, WIPNode } from '../types.ts'
-import { clampSide, isAlongAxis, mapAxisToDimension } from '../utils.ts'
+import { getPaddingByAxis } from '../padding'
+import { isFit, isGrow } from '../sizing'
+import type { Axis, WIPNode } from '../types'
+import { clampSide, isAlongAxis, mapAxisToDimension } from '../utils'
 
 const growCrossAxis = (node: WIPNode, axis: Axis): number => {
 	if (!node.parent || !node.parent.computed[axis]) {
@@ -33,7 +33,7 @@ const growChildrenAlongAxis = (node: WIPNode, axis: Axis): WIPNode => {
 	let takenDimension = 0
 
 	const growingChildren = node.children.filter((child) => {
-		if(child.computed[dimension]) {
+		if(child.computed[axis]) {
 			takenDimension += child.dimensions[dimension]
 			return false
 		}
@@ -50,7 +50,7 @@ const growChildrenAlongAxis = (node: WIPNode, axis: Axis): WIPNode => {
 
 	const padding = getPaddingByAxis(node, axis)
 
-	const totalDimension = node.computed[dimension] - padding - node.gap * (node.children.length - 1)
+	const totalDimension = node.dimensions[dimension] - padding - node.gap * (node.children.length - 1)
 	let availableDimension = totalDimension - takenDimension
 	let takenClampedDimension = 0
 

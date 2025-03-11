@@ -1,8 +1,8 @@
 import { test, expect, describe } from 'vitest'
-import { layout } from '../../src/layout.ts'
-import { fit, fix, grow } from '../../src/sizing.ts'
-import { Input, InputNode, Output, OutputNode } from '../../src/types.ts'
-import { padding } from '../../src/padding.ts'
+import { layout } from '../../src/layout'
+import { fit, fix, grow } from '../../src/sizing'
+import { Input, InputNode, Output, OutputNode } from '../../src/types'
+import { padding } from '../../src/padding'
 
 describe('Empty root', () => {
 	test('grow', () => {

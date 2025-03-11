@@ -1,6 +1,6 @@
 import { test, expect, describe } from 'vitest'
-import { fit, fix, grow } from '../src/sizing.ts'
-import { SizingOption } from '../src/types.ts'
+import { fit, fix, grow } from '../src/sizing'
+import { SizingOption } from '../src/types'
 
 describe('sizing definition', () => {
 	describe('fix()', () => {

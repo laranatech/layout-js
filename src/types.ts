@@ -1,4 +1,4 @@
-import type { Padding } from './padding.ts'
+import type { Padding } from './padding'
 
 export type Axis = 'x' | 'y'
 

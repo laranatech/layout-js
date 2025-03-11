@@ -10,13 +10,21 @@
 		"larana",
 		"frontend"
 	],
-	"main": "src/index.ts",
 	"type": "module",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"exports": {
+		"import": "./dist/index.mjs",
+		"require": "./dist/index.cjs"
+	},
 	"scripts": {
 		"test": "vitest run",
 		"test:watch": "vitest",
-		"dev": "node --experimental-strip-types --experimental-modules test.ts",
-		"lint": "eslint src"
+		"lint": "eslint src",
+		"ts-check": "tsc --noEmit",
+		"check": "npm run lint & npm run ts-check",
+		"build": "tsup"
 	},
 	"repository": {
 		"type": "git",
@@ -32,6 +40,7 @@
 		"@eslint/js": "^9.21.0",
 		"eslint": "^9.21.0",
 		"globals": "^16.0.0",
+		"tsup": "^8.4.0",
 		"typescript": "^5.7.3",
 		"typescript-eslint": "^8.25.0",
 		"vitest": "^3.0.7"

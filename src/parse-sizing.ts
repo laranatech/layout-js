@@ -1,5 +1,5 @@
-import { fit, fix, grow } from './sizing.ts'
-import type { InputSizingOption, SizingOption } from './types.ts'
+import { fit, fix, grow } from './sizing'
+import type { InputSizingOption, SizingOption } from './types'
 
 const validateSizingType = (value: InputSizingOption) => {
 	if (value === null || value === undefined || typeof value === 'string' || Array.isArray(value)) {

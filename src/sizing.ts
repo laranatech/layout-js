@@ -1,4 +1,4 @@
-import type { Axis, SizingOption, SizingType, WIPNode } from './types.ts'
+import type { Axis, SizingOption, SizingType, WIPNode } from './types'
 
 export type SizingOptions = {
 	value?: number,

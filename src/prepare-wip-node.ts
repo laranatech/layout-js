@@ -1,7 +1,7 @@
-import { padding } from './padding.ts'
-import { parseSizing } from './parse-sizing.ts'
-import { fit } from './sizing.ts'
-import type { InputNode, WIPNode } from './types.ts'
+import { padding } from './padding'
+import { parseSizing } from './parse-sizing'
+import { fit } from './sizing'
+import type { InputNode, WIPNode } from './types'
 
 export const prepareWIPNode = (inputRoot: InputNode, parent: WIPNode | null): WIPNode => {
 	const node: WIPNode = {
