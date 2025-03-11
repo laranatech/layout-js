@@ -9,7 +9,6 @@ import { prepareWIPNode } from './prepare-wip-node.ts'
 import { computeDimensions } from './dimensions/index.ts'
 import { computePositions } from './positions.ts'
 
-
 export const prepareOutputNode = (node: WIPNode, parent: OutputNode | null): OutputNode => {
 	const outputNode: OutputNode = {
 		id: node.id,
@@ -28,13 +27,14 @@ export const prepareOutputNode = (node: WIPNode, parent: OutputNode | null): Out
 
 const computeLayout = (root: WIPNode, resolution: Dimensions): WIPNode => {
 	let node = computeDimensions(root, resolution)
-	node = computePositions(root, resolution)
+	node = computePositions(node)
 	return node
 }
 
 export const layout = (input: Input): Output => {
 	let root = prepareWIPNode(input.root, null)
 	root = computeLayout(root, input.resolution)
+	root = computePositions(root)
 
 	const result: Output = {
 		root: prepareOutputNode(root, null),

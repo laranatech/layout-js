@@ -54,6 +54,7 @@ const computeChildrenPositons = (node: WIPNode): WIPNode => {
 		const dimension = mapAxisToDimension(axis)
 
 		node.position.relative[axis] = offset[axis]
+		node.position.absolute[axis] = offset[axis] + node.parent.position.absolute[axis]
 		offset[axis] += node.dimensions[dimension] + gap[axis]
 
 		return node
