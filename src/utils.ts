@@ -1,4 +1,4 @@
-import type { Axis, Dimension, WIPNode } from './types.ts'
+import type { Axis, Dimension, Dimensions, WIPNode } from './types.ts'
 
 export const clamp = (number: number, min: number, max: number): number => {
 	return Math.max(min, Math.min(number, max))
@@ -6,10 +6,6 @@ export const clamp = (number: number, min: number, max: number): number => {
 
 export const clampSide = (side: number, node: WIPNode, axis: Axis): number => {
 	return clamp(side, node.sizing[axis].min || 0, node.sizing[axis].max || side)
-}
-
-export const hasOpenedChildren = (node: WIPNode): boolean => {
-	return node.children.some((child) => !child.computed.x || !child.computed.y)
 }
 
 export const mapAxisToDimension = (axis: Axis): Dimension => {
@@ -40,4 +36,27 @@ export const mapDimensionToAxis = (dimension: Dimension): Axis => {
 
 export const isAlongAxis = (node: WIPNode, axis: Axis): boolean => {
 	return axis === 'x' && node.direction === 'ROW' || axis === 'y' && node.direction === 'COLUMN'
+}
+
+export const sumChildrenDimension = (nodes: WIPNode[], dimension: Dimension): number => {
+	return nodes.reduce(
+		(acc: number, node: WIPNode) => acc + node.dimensions[dimension],
+		0
+	)
+}
+
+export const sumChildrenDimensions = (nodes: WIPNode[]): Dimensions => {
+	return nodes.reduce((acc: Dimensions, node: WIPNode) => {
+		return {
+			width: acc.width + node.dimensions.width,
+			height: acc.height + node.dimensions.height,
+		}
+	}, { width: 0, height: 0 } as Dimensions)
+}
+
+export const maxChidrenDimmension = (nodes: WIPNode[], dimension: Dimension) => {
+	return nodes.reduce(
+		(acc: number, node: WIPNode) => acc < node.dimensions[dimension] ? node.dimensions[dimension] : acc,
+		0
+	)
 }

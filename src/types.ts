@@ -18,6 +18,8 @@ export type Alignment = 'START' | 'CENTER' | 'END' | 'STRETCH'
 
 export type Direction = 'ROW' | 'COLUMN'
 
+export type TextOverflow = 'WRAP' | 'ELLIPSIS' | 'HIDDEN'
+
 export type SizingType = 'FIT' | 'GROW' | 'FIX'
 
 export type SizingOption = {
@@ -45,6 +47,7 @@ export type InputNode = {
 	horizontalAlign?: Alignment
 	gap?: number
 	text?: string
+	textOverflow?: TextOverflow
 	direction?: Direction
 }
 
@@ -84,6 +87,7 @@ export type WIPNode = {
 	padding: Padding
 	gap: number
 	text: string
+	textOverflow: TextOverflow
 	direction: Direction
 	alignment: {
 		x: Alignment

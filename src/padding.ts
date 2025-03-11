@@ -1,11 +1,11 @@
-import { Axis, WIPNode } from "./types";
+import type { Axis, WIPNode } from './types'
 
 export type Padding = {
 	top: number
 	bottom: number
 	left: number
 	right: number
-};
+}
 
 type PaddingOptsObject = {
 	top?: number
@@ -56,7 +56,7 @@ const parsePaddingArray = (value: number[]): Padding => {
 
 const validatePaddingObject = (value: PaddingOptsObject) => {
 	if (Object.values(value).some((item) => item < 0)) {
-		throw new Error(`Padding can't be negative`)
+		throw new Error('Padding cannot be negative')
 	}
 	if (value.vertical && (value.top || value.bottom)) {
 		throw new Error('Padding cannot have both vertical and top|bottom fields')

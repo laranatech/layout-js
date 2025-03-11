@@ -40,7 +40,7 @@ export const grow = (options?: SizingOptions): SizingOption => {
 export const fit = (options?: SizingOptions): SizingOption => {
 	validatePositiveSizing(options)
 	if (typeof options === 'number' || options?.value) {
-		throw new Error(`fit component can't have value`)
+		throw new Error('fit component cannot have value')
 	}
 
 	return { ...options, type: 'FIT' }
@@ -48,14 +48,14 @@ export const fit = (options?: SizingOptions): SizingOption => {
 
 export const fix = (options: SizingOptions): SizingOption => {
 	if (options === undefined || options === null) {
-		throw new Error(`fix sizing options can't be undefined`)
+		throw new Error('fix sizing options cannot be undefined')
 	}
 	validatePositiveSizing(options)
 	if (typeof options === 'number') {
 		return { type: 'FIX', value: options }
 	}
 	if (!options.value) {
-		throw new Error(`fix sizing options value can't be undefined`)
+		throw new Error('fix sizing options value cannot be undefined')
 	}
 	return { ...options, type: 'FIX' }
 }

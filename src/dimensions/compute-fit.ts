@@ -1,21 +1,13 @@
 import { getPaddingByAxis } from '../padding.ts'
 import { isFit, isGrow } from '../sizing.ts'
-import type { Axis, Dimension, WIPNode } from '../types.ts'
-import { clampSide, isAlongAxis, mapAxisToDimension } from '../utils.ts'
-
-export const sumChildrenDimension = (nodes: WIPNode[], dimension: Dimension): number => {
-	return nodes.reduce(
-		(acc: number, node: WIPNode) => acc + node.dimensions[dimension],
-		0
-	)
-}
-
-export const maxChidrenDimmension = (nodes: WIPNode[], dimension: Dimension) => {
-	return nodes.reduce(
-		(acc: number, node: WIPNode) => acc < node.dimensions[dimension] ? node.dimensions[dimension] : acc,
-		0
-	)
-}
+import type { Axis, WIPNode } from '../types.ts'
+import {
+	clampSide,
+	isAlongAxis,
+	mapAxisToDimension,
+	maxChidrenDimmension,
+	sumChildrenDimension,
+} from '../utils.ts'
 
 export const hasNoGrowChildren = (children: WIPNode[], axis: Axis) => {
 	if (children.some((child) => isGrow(child, axis))) {

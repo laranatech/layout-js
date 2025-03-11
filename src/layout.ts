@@ -7,7 +7,7 @@ import type {
 } from './types.ts'
 import { prepareWIPNode } from './prepare-wip-node.ts'
 import { computeDimensions } from './dimensions/index.ts'
-import { computePositions } from './position.ts'
+import { computePositions } from './positions.ts'
 
 
 export const prepareOutputNode = (node: WIPNode, parent: OutputNode | null): OutputNode => {
@@ -29,7 +29,7 @@ export const prepareOutputNode = (node: WIPNode, parent: OutputNode | null): Out
 const computeLayout = (root: WIPNode, resolution: Dimensions): WIPNode => {
 	let node = computeDimensions(root, resolution)
 	node = computePositions(root, resolution)
-	return root
+	return node
 }
 
 export const layout = (input: Input): Output => {

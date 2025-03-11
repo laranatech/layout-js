@@ -12,6 +12,7 @@ export const prepareWIPNode = (inputRoot: InputNode, parent: WIPNode | null): WI
 		direction: inputRoot.direction || 'ROW',
 		text: inputRoot.text || '',
 		parent,
+		textOverflow: inputRoot.textOverflow || 'WRAP',
 		alignment: {
 			x: inputRoot.verticalAlign || 'START',
 			y: inputRoot.horizontalAlign || 'START',
