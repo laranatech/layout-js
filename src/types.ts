@@ -1,4 +1,10 @@
-export type Dimmensions = {
+import type { Padding } from './padding.ts'
+
+export type Axis = 'x' | 'y'
+
+export type Dimension = 'width' | 'height'
+
+export type Dimensions = {
 	width: number
 	height: number
 }
@@ -8,46 +14,35 @@ export type Position = {
 	y: number
 }
 
+export type Alignment = 'START' | 'CENTER' | 'END' | 'STRETCH'
+
+export type Direction = 'ROW' | 'COLUMN'
+
+export type SizingType = 'FIT' | 'GROW' | 'FIX'
+
 export type SizingOption = {
-	type: 'FIT' | 'GROW' | 'FIX',
+	type: SizingType,
 	value?: number
 	min?: number
 	max?: number
 }
 
-export type Padding = {
-	left?: number
-	right?: number
-	top?: number
-	bottom?: number
-	vertical?: number
-	horizontal?: number
-} | number
-
-export type VerticalAlign = 'TOP' | 'MIDDLE' | 'BOTTOM' | 'BETWEEN'
-
-export type HorizontalAlign = 'LEFT' | 'CENTER' | 'RIGHT' | 'BETWEEN'
+export type InputSizingOption = SizingOption | number
 
 export type Sizing = {
 	x: SizingOption
 	y: SizingOption
 }
 
-export type InputSizing = {
-	x?: SizingOption
-	y?: SizingOption
-}
-
-export type Direction = 'ROW' | 'COLUMN'
-
 export type InputNode = {
 	id: string
-	sizing?: InputSizing
+	width?: InputSizingOption
+	height?: InputSizingOption
 	children: InputNode[]
 	parent: InputNode | null
 	padding?: Padding
-	verticalAlign?: VerticalAlign
-	horizontalAlign?: HorizontalAlign
+	verticalAlign?: Alignment
+	horizontalAlign?: Alignment
 	gap?: number
 	text?: string
 	direction?: Direction
@@ -55,21 +50,56 @@ export type InputNode = {
 
 export type Input = {
 	root: InputNode
-	resolution: Dimmensions
+	resolution: Dimensions
 }
 
 export type OutputNode = {
 	id: string
-	position: {
-		absolute: Position
-		relative: Position
-	}
-	dimmensions: Dimmensions
+	x: number
+	y: number
+	width: number
+	height: number
 	children: OutputNode[]
 	parent: OutputNode | null
 }
 
+export type FlatNode = {
+	id: string
+	x: number
+	y: number
+	width: number
+	height: number
+}
+
 export type Output = {
 	root: OutputNode
-	resolution: Dimmensions
+	resolution: Dimensions
+}
+
+export type WIPNode = {
+	id: string
+	children: WIPNode[]
+	parent: WIPNode | null
+	sizing: Sizing
+	padding: Padding
+	gap: number
+	text: string
+	direction: Direction
+	alignment: {
+		x: Alignment
+		y: Alignment
+	}
+	position: {
+		absolute: Position
+		relative: Position
+	}
+	dimensions: Dimensions
+	computed: {
+		x: boolean
+		y: boolean
+	}
+	offset: {
+		x: number
+		y: number
+	}
 }
