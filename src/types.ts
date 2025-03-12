@@ -47,6 +47,7 @@ export type InputNode = {
 	horizontalAlign?: Alignment
 	gap?: number
 	text?: string
+	fontSize?: number
 	textOverflow?: TextOverflow
 	direction?: Direction
 }
@@ -88,6 +89,7 @@ export type WIPNode = {
 	gap: number
 	text: string
 	textOverflow: TextOverflow
+	fontSize: number
 	direction: Direction
 	alignment: {
 		x: Alignment

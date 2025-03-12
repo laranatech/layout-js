@@ -7,5 +7,5 @@ export default defineConfig({
 	minify: true,
 	sourcemap: true,
 	target: 'esnext',
-	clean: true
+	clean: true,
 })

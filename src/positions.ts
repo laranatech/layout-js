@@ -2,7 +2,7 @@ import type {
 	WIPNode,
 	Axis,
 } from './types'
-import { mapAxisToDimension, sumChildrenDimensions } from './utils'
+import { isAlongAxis, mapAxisToDimension, sumChildrenDimensions } from './utils'
 
 const computeInitialOffset = (node: WIPNode, axis: Axis, total: number): number => {
 	const dimension = mapAxisToDimension(axis)
@@ -50,21 +50,26 @@ const computeChildrenPositons = (node: WIPNode): WIPNode => {
 		y: computeInitialOffset(node, 'y', totalDimensions.height),
 	}
 
-	const computePosition = (node: WIPNode, axis: Axis): WIPNode => {
+	const isAlongX = isAlongAxis(node, 'x')
+
+	const computePosition = (node: WIPNode, axis: Axis, currOffset: number): WIPNode => {
 		const dimension = mapAxisToDimension(axis)
 
 		const parentPositon = node.parent ? node.parent.position.absolute[axis] : 0
 
-		node.position.relative[axis] = offset[axis]
-		node.position.absolute[axis] = offset[axis] + parentPositon
-		offset[axis] += node.dimensions[dimension] + gap[axis]
+		node.position.relative[axis] = currOffset
+		node.position.absolute[axis] = currOffset + parentPositon
+
+		if (isAlongAxis(node.parent!, axis)) {
+			offset[axis] += node.dimensions[dimension] + gap[axis]
+		}
 
 		return node
 	}
 
 	node.children.forEach((child) => {
-		computePosition(child, 'x')
-		computePosition(child, 'y')
+		computePosition(child, 'x', isAlongX ? offset.x : 0)
+		computePosition(child, 'y', isAlongX ? 0 : offset.y)
 	})
 
 	return node

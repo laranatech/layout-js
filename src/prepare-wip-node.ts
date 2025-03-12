@@ -1,21 +1,32 @@
 import { padding } from './padding'
 import { parseSizing } from './parse-sizing'
 import { fit } from './sizing'
-import type { InputNode, WIPNode } from './types'
+import type { Alignment, InputNode, WIPNode } from './types'
+
+const parseAlignment = (value: Alignment | undefined) => {
+	return value || 'START'
+}
 
 export const prepareWIPNode = (inputRoot: InputNode, parent: WIPNode | null): WIPNode => {
+	const gap = inputRoot.gap || 0
+
+	if (gap < 0) {
+		throw new Error(`Gap cannot be negative: ${gap}`)
+	}
+
 	const node: WIPNode = {
 		...inputRoot,
 		children: [],
-		padding: inputRoot.padding || padding(0),
-		gap: inputRoot.gap || 0,
+		padding: padding(inputRoot.padding),
+		gap,
 		direction: inputRoot.direction || 'ROW',
 		text: inputRoot.text || '',
+		fontSize: inputRoot.fontSize || 0,
 		parent,
 		textOverflow: inputRoot.textOverflow || 'WRAP',
 		alignment: {
-			x: inputRoot.verticalAlign || 'START',
-			y: inputRoot.horizontalAlign || 'START',
+			x: parseAlignment(inputRoot.verticalAlign),
+			y: parseAlignment(inputRoot.horizontalAlign),
 		},
 		sizing: {
 			x: inputRoot.width ? parseSizing(inputRoot.width) : fit(),

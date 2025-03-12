@@ -16,7 +16,7 @@ type PaddingOptsObject = {
 	horizontal?: number
 }
 
-export type PaddingOpts = PaddingOptsObject | number | number[]
+export type PaddingOpts = PaddingOptsObject | number | number[] | undefined
 
 const parsePaddingNumber = (value: number): Padding => {
 	if (value < 0) {
